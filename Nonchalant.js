@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('viewerCount').textContent = viewerCount;
     
     // Send viewer count to server (for Discord bot)
-    fetch('viewercount.php', {
-        method: 'POST',
+    fetch('https://your-repl-url.your-repl-username.repl.co/viewercount', {        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
