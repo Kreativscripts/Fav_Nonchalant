@@ -10,12 +10,43 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('viewerCount').textContent = viewerCount;
     
     // Send viewer count to server (for Discord bot)
-    fetch('https://your-repl-url.your-repl-username.repl.co/viewercount', {        method: 'POST',
+    fetch('https://your-repl-url.your-repl-username.repl.co/viewercount', {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ count: viewerCount }),
     });
+
+    // Updated updateGistCount function with Authorization header using environment variable
+    async function updateGistCount(count) {
+        const gistId = '82233ede0fe7c68e3109d163e35a8a62';
+        const gistUrl = `https://api.github.com/gists/${gistId}`;
+        
+        try {
+            const response = await fetch(gistUrl, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                body: JSON.stringify({
+                    files: {
+                        'viewcount.json': {
+                            content: JSON.stringify({ count: count })
+                        }
+                    }
+                })
+            });
+            
+            if (!response.ok) {
+                console.error('Failed to update Gist:', await response.text());
+            }
+        } catch (error) {
+            console.error('Error updating count:', error);
+        }
+    }
 
     // Add hover effect to achievement items
     const achievements = document.querySelectorAll('.achievement-item');
