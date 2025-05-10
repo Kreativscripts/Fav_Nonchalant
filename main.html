@@ -3,73 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profile page of Pat Williams, AI & Cybersecurity Expert">
     <title>Pat Williams | Profile</title>
     <link rel="stylesheet" href="Prettify.css">
     <link rel="stylesheet" href="Buttons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="dark-mode">
     <div class="navbar">
         <div class="license-button">
-            <a href="licsense.html" class="neon-button">License</a>
+            <a href="license.html" class="neon-button">License</a>
         </div>
         <div class="viewer-count">
-            <div class="eye-icon"><i class="fas fa-eye"></i></div>
+            <div class="eye-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
             <div class="count-number" id="viewerCount">0</div>
         </div>
     </div>
     
-    <div class="container">
-        <div class="profile-header">
+    <main class="container">
+        <header class="profile-header">
             <h1>Pat Williams</h1>
             <p class="subtitle">15 | Ontario, Canada</p>
-        </div>
+        </header>
         
-        <div class="achievements-section">
-            <h2 class="section-title">Achievements</h2>
+        <section class="achievements-section" aria-labelledby="achievements-heading">
+            <h2 id="achievements-heading" class="section-title">Achievements</h2>
             <ul class="achievements-list">
                 <li class="achievement-item">
-                    <div class="achievement-title"><b>AI & Cybersecurity Expert</b></div>
-                    <div class="achievement-desc">Specialized in AI development and cybersecurity solutions, creating advanced protection systems and AI models.</div>
+                    <h3 class="achievement-title">AI & Cybersecurity Expert</h3>
+                    <p class="achievement-desc">Specialized in AI development and cybersecurity solutions, creating advanced protection systems and AI models.</p>
                 </li>
                 <li class="achievement-item">
-                    <div class="achievement-title"><b>Built & Patented Tech</b></div>
-                    <div class="achievement-desc">Developed and patented innovative technology solutions with unique applications in various industries.</div>
+                    <h3 class="achievement-title">Built & Patented Tech</h3>
+                    <p class="achievement-desc">Developed and patented innovative technology solutions with unique applications in various industries.</p>
                 </li>
                 <li class="achievement-item">
-                    <div class="achievement-title"><b>Award-winning Innovator</b></div>
-                    <div class="achievement-desc">Recognized with multiple awards for technological innovation and creative problem-solving.</div>
+                    <h3 class="achievement-title">Award-winning Innovator</h3>
+                    <p class="achievement-desc">Recognized with multiple awards for technological innovation and creative problem-solving.</p>
                 </li>
             </ul>
-        </div>
+        </section>
         
-        <div class="services-section">
-            <h2 class="section-title">Services</h2>
-            <p><i>I sell and host discord bots, I sell roblox games scripts, Beaming Websites.</i></p>
-            <p><i>I'm Open Door so you can DM me anytime for any tech related stuff.</i></p>
-        </div>
+        <section class="services-section" aria-labelledby="services-heading">
+            <h2 id="services-heading" class="section-title">Services</h2>
+            <p><em>I sell and host discord bots, I sell roblox games scripts, Beaming Websites.</em></p>
+            <p><em>I'm Open Door so you can DM me anytime for any tech related stuff.</em></p>
+        </section>
         
-        <div class="links-section">
-            <h2 class="section-title">My Links</h2>
+        <section class="links-section" aria-labelledby="links-heading">
+            <h2 id="links-heading" class="section-title">My Links</h2>
             <div class="links-grid">
-                <a href="https://www.youtube.com/@heyitspat_y" target="_blank" class="social-link youtube">
-                    <i class="fab fa-youtube"></i> YouTube
+                <a href="https://www.youtube.com/@heyitspat_y" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                    <i class="fab fa-youtube" aria-hidden="true"></i> YouTube
                 </a>
-                <a href="https://discord.gg/yhPuwb4qsX" target="_blank" class="social-link discord">
-                    <i class="fab fa-discord"></i> Discord
+                <a href="https://discord.gg/yhPuwb4qsX" target="_blank" rel="noopener noreferrer" class="social-link discord">
+                    <i class="fab fa-discord" aria-hidden="true"></i> Discord
                 </a>
-                <a href="https://github.com/Kreativscripts" target="_blank" class="social-link github">
-                    <i class="fab fa-github"></i> GitHub
+                <a href="https://github.com/Kreativscripts" target="_blank" rel="noopener noreferrer" class="social-link github">
+                    <i class="fab fa-github" aria-hidden="true"></i> GitHub
                 </a>
                 <a href="mailto:patrobloxgaming15@gmail.com" class="social-link email">
-                    <i class="fas fa-envelope"></i> Email
+                    <i class="fas fa-envelope" aria-hidden="true"></i> Email
                 </a>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
     
     <script src="Nonchalant.js"></script>
 </body>
