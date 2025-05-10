@@ -2,12 +2,82 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', monospace;
-    background: url('https://cdn.pfps.gg/banners/8007-code.gif') no-repeat center center fixed;
-    background-size: cover;
+    font-family: 'Inter', sans-serif;
     color: #fff;
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background 0.5s ease;
+}
+
+body.dark-mode {
+    background: url('https://cdn.pfps.gg/banners/2394-moon.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    z-index: 9999;
+}
+
+.loader img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Intro Container */
+.intro-container {
+    display: none;
+    position: relative;
+    height: 100vh;
+    background: url('https://cdn.pfps.gg/banners/3770-katana.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.intro-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.intro-left {
+    flex: 1;
+    color: #e0e0e0;
+}
+
+.intro-left h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.intro-left p {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    font-weight: 300;
+}
+
+.intro-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.intro-quote {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* Viewer Count */
@@ -20,244 +90,250 @@ body {
     background: rgba(0, 0, 0, 0.7);
     border-radius: 30px;
     padding: 8px 15px;
-    border: 2px solid #0ff;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1000;
 }
 
 .eye-icon {
     margin-right: 10px;
-    color: #0ff;
+    color: #fff;
 }
 
 .count-number {
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
-/* Achievement Items */
-.achievement-title {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+.likes-count {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
 }
 
-.achievement-desc {
-    font-size: 0.9rem;
-    color: #ccc;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+.likes-count i {
+    margin-right: 5px;
+    color: #ff4757;
 }
 
-.achievement-item:hover .achievement-desc {
-    max-height: 100px;
-}
-
-.bot-link {
+/* Sword Button */
+.sword-button-container {
+    position: relative;
     display: inline-block;
-    margin-top: 8px;
-    padding: 5px 10px;
-    background: rgba(88, 101, 242, 0.7);
-    color: white;
+}
+
+.sword-button {
+    position: relative;
+    padding: 15px 30px;
+    background: rgba(100, 120, 140, 0.3);
+    color: #e0e0e0;
+    border: 1px solid rgba(100, 150, 200, 0.5);
     border-radius: 4px;
-    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sword-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.sword-button .sword-icon {
+    margin-left: 10px;
     transition: all 0.3s ease;
 }
 
-.bot-link:hover {
-    background: rgba(88, 101, 242, 1);
+.sword-button:hover {
+    background: rgba(100, 120, 140, 0.5);
     transform: translateY(-2px);
 }
 
+.sword-button:hover .sword-icon {
+    transform: rotate(15deg);
+}
 
-/* Landing Page Styles */
-.landing-container {
+.like-btn {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    text-align: center;
-    padding: 20px;
-    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.neon-text {
-    font-size: 3.5rem;
-    margin: 0;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-    animation: neonGlow 2s infinite alternate;
+.like-btn:hover {
+    background: rgba(255, 71, 87, 0.3);
 }
 
-.subtitle {
-    font-size: 1.5rem;
-    margin: 10px 0 30px;
-    color: #ccc;
+.like-btn i {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.like-btn.liked i {
+    color: #ff4757;
+}
+
+/* Flash effect */
+.flash-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9998;
 }
 
 /* Container Styles */
 .container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px;
     backdrop-filter: blur(8px);
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
     margin-top: 80px;
     margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .profile-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.profile-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    font-weight: 300;
 }
 
 /* Section Styles */
 .section-title {
-    font-size: 2rem;
-    color: #0ff;
-    border-bottom: 2px solid #0ff;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+    position: relative;
     padding-bottom: 10px;
-    margin-top: 30px;
 }
 
-.dizzy {
-    margin-left: 10px;
-    animation: spin 4s linear infinite;
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .achievements-list {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .achievement-item {
-    font-size: 1.2rem;
-    margin: 15px 0;
-    padding: 10px;
-    background: rgba(0, 255, 255, 0.1);
-    border-left: 3px solid #0ff;
-    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.achievement-item:hover {
-    background: rgba(0, 255, 255, 0.2);
-    transform: translateX(10px);
+.achievement-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.achievement-desc {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-top: 10px;
+    font-weight: 300;
 }
 
 .services-section {
-    margin: 30px 0;
-    line-height: 1.6;
+    margin: 40px 0;
+    line-height: 1.8;
 }
 
 /* Links Section */
 .links-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
     margin-top: 20px;
 }
 
 .social-link {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border-radius: 6px;
     text-decoration: none;
     color: white;
-    font-weight: bold;
+    font-weight: 500;
     transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .social-link i {
     margin-right: 10px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
-
-.social-link.youtube { background: rgba(255, 0, 0, 0.7); }
-.social-link.discord { background: rgba(88, 101, 242, 0.7); }
-.social-link.github { background: rgba(36, 41, 46, 0.7); }
-.social-link.email { background: rgba(212, 70, 56, 0.7); }
 
 .social-link:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
-}
-
-/* License Page Styles */
-.license-container {
-    max-width: 900px;
-    margin: 80px auto 40px;
-    padding: 30px;
-    backdrop-filter: blur(8px);
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-}
-
-.last-updated {
-    text-align: right;
-    color: #ccc;
-    margin-top: -20px;
-    margin-bottom: 30px;
-}
-
-.license-content {
-    line-height: 1.6;
-}
-
-.license-content h3 {
-    color: #0ff;
-    margin-top: 25px;
-}
-
-.license-content ul {
-    margin-bottom: 20px;
-}
-
-.signature {
-    margin-top: 40px;
-    text-align: right;
-    font-style: italic;
-}
-
-/* Navbar Styles */
-.navbar {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-/* Animations */
-@keyframes neonGlow {
-    from {
-        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-    }
-    to {
-        text-shadow: 0 0 15px #0ff, 0 0 25px #0ff, 0 0 35px #0ff, 0 0 45px #0ff;
-    }
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .neon-text {
-        font-size: 2.5rem;
-    }
-    
-    .container, .license-container {
-        margin: 70px 20px 30px;
+    .intro-content {
+        flex-direction: column;
         padding: 20px;
+        text-align: center;
     }
     
-    .links-grid {
-        grid-template-columns: 1fr;
+    .intro-right {
+        justify-content: center;
+        margin-top: 40px;
+    }
+    
+    .container {
+        padding: 20px;
+        margin: 70px 20px 30px;
+    }
+    
+    .profile-header h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
     }
 }
