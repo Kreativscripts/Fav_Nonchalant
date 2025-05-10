@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Updated updateGistCount function with Authorization header using environment variable
-const GITHUB_TOKEN = "your_token_here"; // Paste your token between quotes
+const GITHUB_TOKEN = "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";
 const GIST_ID = "82233ede0fe7c68e3109d163e35a8a62";
 
 async function updateGistCount(count) {
