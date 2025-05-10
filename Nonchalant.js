@@ -19,34 +19,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Updated updateGistCount function with Authorization header using environment variable
-    async function updateGistCount(count) {
-        const gistId = '82233ede0fe7c68e3109d163e35a8a62';
-        const gistUrl = `https://api.github.com/gists/${gistId}`;
-        
-        try {
-            const response = await fetch(gistUrl, {
-                method: 'PATCH',
-                headers: {
-                    'Authorization': `token ${process.env.GITHUB_TOKEN}`,
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/vnd.github.v3+json'
-                },
-                body: JSON.stringify({
-                    files: {
-                        'viewcount.json': {
-                            content: JSON.stringify({ count: count })
-                        }
+const GITHUB_TOKEN = "your_token_here"; // Paste your token between quotes
+const GIST_ID = "82233ede0fe7c68e3109d163e35a8a62";
+
+async function updateGistCount(count) {
+    try {
+        const response = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `token ${GITHUB_TOKEN}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.github.v3+json'
+            },
+            body: JSON.stringify({
+                files: {
+                    'viewcount.json': {
+                        content: JSON.stringify({ count: count })
                     }
-                })
-            });
-            
-            if (!response.ok) {
-                console.error('Failed to update Gist:', await response.text());
-            }
-        } catch (error) {
-            console.error('Error updating count:', error);
+                }
+            })
+        });
+        
+        if (!response.ok) {
+            console.error("Gist update failed:", await response.text());
         }
+    } catch (error) {
+        console.error("Error:", error);
     }
+}
 
     // Add hover effect to achievement items
     const achievements = document.querySelectorAll('.achievement-item');
